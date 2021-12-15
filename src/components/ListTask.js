@@ -8,21 +8,7 @@ import './styleListCard.css'
 
 const ListTask = () => {
     const task = useSelector(state => state.tasks.listTask)
-    const [liste, setListe] = useState()
-
-const isDone = () => {
-    const mv = task.filter(elt=>elt.isDone == true);
-    setListe(mv)
-}
-
-const notDone = () => {
-    const mv = task.filter(elt=>elt.isDone == false);
-    setListe(mv)
-}
-
-const All = () => {
-    setListe(task)
-}
+    const [search, setSearch] = useState('all')
 
 
     return (
@@ -31,11 +17,12 @@ const All = () => {
             <h1>To Do List</h1>
         <AddTask/>
         <div className='btns'>
-        <button onClick={()=>All()}>All</button>
-        <button onClick={()=>isDone()}>Done</button>
-        <button onClick={()=>notDone()}>Not Done</button></div> 
-        {liste != null ? liste.map(t => <Task key={t.id} {...t}/>) : null}
-        {/* {task.map(t => <Task key={t.id} {...t}/>)} */}
+        <button onClick={()=>setSearch('all')}>All</button>
+        <button onClick={()=>setSearch('done')}>Done</button>
+        <button onClick={()=>setSearch('notdone')}>Not Done</button></div> 
+        {task.filter(el=>(
+            search==='all' ? el : search==='done' ? el.isDone : !el.isDone
+        )).map(t => <Task key={t.id} {...t}/>)}
         </div>
     )
 }

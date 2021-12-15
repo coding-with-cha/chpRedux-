@@ -2,12 +2,8 @@
 ::-webkit-scrollbar {
     width: 10px;
   }
-  ::-webkit-scrollbar-button {
-    height: 220px;
-  }
   ::-webkit-scrollbar-track {
-    background: rgba(228, 197, 60, 0.76);
-    border-radius: 50px;
+    background: transparent;
   }
 .listTask{
     margin-top: 4%;
@@ -101,6 +97,7 @@ button{
     width: auto;
 }
 .btnbtn h2{
+    width: 150px;
     font-size: 20px;
     font-weight: normal;
     color: rgb(38, 39, 39);
